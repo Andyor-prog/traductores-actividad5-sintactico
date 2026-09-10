@@ -37,3 +37,17 @@ Los perfiles de ejecucion incluyen las bibliotecas de `lib/` y usan `bin/` como 
 - Paquetes, importaciones y clases.
 
 El analizador informa reglas reconocidas y errores con linea, columna y token encontrado. Para errores de miembros, intenta recuperar el analisis hasta el siguiente punto y coma.
+
+## Tabla de resultados
+
+| Prueba | Tipo | Resultado esperado | Resultado obtenido | Estado |
+|---|---|---|---|---|
+| Atributo sin inicializacion | Valida | Reconocer declaracion | Se reconoce `int edad;` | Correcta |
+| Atributo inicializado | Valida | Reconocer declaracion | Se reconoce `float salario = 5000;` | Correcta |
+| Multiples atributos | Valida | Reconocer identificadores | Se reconocen `nombre, apellido` | Correcta |
+| Constante inicializada | Valida | Reconocer constante | Se reconocen `PI` y `MAX` | Correcta |
+| Constante sin inicializar | Invalida | Reportar error | Se reporta que la constante debe inicializarse | Correcta |
+| Falta de coma | Invalida | Reportar error | Se reporta error al encontrar el segundo identificador | Correcta |
+| Declaracion incompleta | Invalida | Reportar error | Se reporta error al encontrar `;` sin identificador | Correcta |
+
+Las pruebas validas se ejecutan con `prueba_valida.txt`; los tres casos invalidos se verifican con `prueba_errores.txt`. La prueba `prueba_mixta.txt` demuestra la recuperacion y el reconocimiento de declaraciones posteriores.
